@@ -1,7 +1,12 @@
+import { Provider } from 'react-redux';
 import styled from 'styled-components';
 
-import PeopleView from 'features/PeopleView';
-import PlanetsView from 'features/PlanetsView';
+// Components
+import PeopleView from 'components/PeopleView';
+import PlanetsView from 'components/PlanetsView';
+
+import store from 'store/store';
+import toolkitStore from 'store/toolkitStore';
 
 // Images
 import BackgroundImg from 'assets/images/background.jpg';
@@ -19,8 +24,12 @@ const Wrapper = styled.div`
 
 const App = () => (
   <Wrapper>
-    <PeopleView />
-    <PlanetsView />
+    <Provider store={store}>
+      <PlanetsView />
+    </Provider>
+    <Provider store={toolkitStore}>
+      <PeopleView />
+    </Provider>
   </Wrapper>
 );
 

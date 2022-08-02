@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import { fetchPeople } from './peopleSlice';
+import { fetchPeople } from '../reducers/people';
 
 // Styles
 const Wrapper = styled.div`
@@ -17,7 +17,7 @@ const H2 = styled.h2`
 `;
 
 const PeopleView = () => {
-  const people = useSelector(({ people }) => people);
+  const people = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {

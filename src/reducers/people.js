@@ -7,13 +7,14 @@ const initialState = {
   error: ''
 };
 
-export const fetchPeople = createAsyncThunk('person/fetchPeople', () => {
-  return axios
-    .get('https://swapi.dev/api/people')
-    .then((response) => response.data)
-});
+export const fetchPeople = createAsyncThunk('person/fetchPeople', async () => {
+  const response = await axios
+    .get('https://swapi.dev/api/people');
+    return response.data;
+  },
+);
 
-const peopleSlice = createSlice({
+const people = createSlice({
   name: 'person',
   initialState,
   extraReducers: (builder) => {
@@ -33,4 +34,4 @@ const peopleSlice = createSlice({
   },
 });
 
-export default peopleSlice.reducer;
+export default people.reducer;

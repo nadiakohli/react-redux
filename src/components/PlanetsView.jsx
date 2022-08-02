@@ -17,7 +17,7 @@ const H2 = styled.h2`
 `;
 
 const PlanetsView = () => {
-  const planets = useSelector(({ planets }) => planets);
+  const planets = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {

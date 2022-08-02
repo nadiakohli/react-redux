@@ -4,10 +4,14 @@ export const LOADING = 'loading';
 export const SUCCESS = 'success';
 export const ERROR = 'error';
 
-export const fetchPlanets = () => (dispatch) => {
+export const fetchPlanets = () => async (dispatch) => {
   dispatch({ type: LOADING });
-  return axios
+  const response = await axios
     .get('https://swapi.dev/api/planets')
-    .then((response) => dispatch({ type: SUCCESS, payload: response.data.results }))
-    .catch((err) => dispatch({ type: ERROR, payload: err }))
+    .catch((err) => dispatch({ type: ERROR, payload: err }));
+
+  return dispatch({ 
+    type: SUCCESS, 
+    payload: response.data.results 
+  });
 };
